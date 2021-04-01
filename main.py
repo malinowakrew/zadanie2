@@ -59,41 +59,40 @@ def nine(*arg):
 
 
 # Sign functions
-def plus(*arg):
-    arg = list(arg)
-    if type(arg[0]) == int:
-        return [arg[0]] + [lambda x, y: x + y]
-    return arg[0] + [lambda x, y: x + y]
 
+def equation(arg, lambda_equation):
+    try:
+        if type(arg[0]) == int:
+            return [arg[0]] + [lambda_equation]
+        return arg[0] + [lambda_equation]
+
+    except Exception as error:
+        print(f"error: {error}")
+        return []
+
+
+def plus(*arg):
+    return equation(list(arg), lambda x, y: x + y)
 
 
 def minus(*arg):
-    arg = list(arg)
-    if type(arg[0]) == int:
-        return [arg[0]] + [lambda x, y: y - x]
-    return arg[0] + [lambda x, y: y - x]
+    return equation(list(arg), lambda x, y: y - x)
 
 
 def divided_by(*arg):
-    arg = list(arg)
-    if type(arg[0]) == int:
-        return [arg[0]] + [lambda x, y: y // x]
-    return arg[0] + [lambda x, y: y // x]
+    return equation(list(arg), lambda x, y: y // x)
 
 
 def times(*arg):
-    arg = list(arg)
-    if type(arg[0]) == int:
-        return [arg[0]] + [lambda x, y: x * y]
-    return arg[0] + [lambda x, y: x * y]
+    return equation(list(arg), lambda x, y: x * y)
 
 
 if __name__ == '__main__':
 
-    print(f"wynik {eight(plus(two()))}")
-    print(f"wynik {eight(times(three()))}")
-    print(f"wynik {eight(divided_by(three()))}")
-    print(f"wynik {eight(minus(six(divided_by(three()))))}")
+    print(f"8 + 2 =  {eight(plus(two()))}")
+    print(f"8 * 3 = {eight(times(three()))}")
+    print(f"8 / 3 = {eight(divided_by(three()))}")
+    print(f"8 * (6 / (4 / 2)) = {eight(times(six(divided_by(four(divided_by(two()))))))}")
     print(check_tables([121, 144, 19, 161, 144, 19, 11], [121, 14641, 20736, 362, 25921, 362, 20736, 361]))
 
 
