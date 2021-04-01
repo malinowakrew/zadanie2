@@ -1,13 +1,3 @@
-# Exercise 4
-def check_tables(table1, table2):
-    tab = [i in table2 for i in list(map(lambda x: x**2, table1))]
-
-    if len(tab) == set(table2):
-        return True
-    else:
-        return False
-
-
 # Exercise 2
 # Number functions
 def present_number(number, arg):
@@ -93,6 +83,5 @@ if __name__ == '__main__':
     print(f"8 * 3 = {eight(times(three()))}")
     print(f"8 / 3 = {eight(divided_by(three()))}")
     print(f"8 * (6 / (4 / 2)) = {eight(times(six(divided_by(four(divided_by(two()))))))}")
-    print(check_tables([121, 144, 19, 161, 144, 19, 11], [121, 14641, 20736, 362, 25921, 362, 20736, 361]))
 
 
