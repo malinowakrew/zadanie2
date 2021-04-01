@@ -1,15 +1,19 @@
 # Exercise 2
 # Number functions
 def present_number(number, arg):
-    if len(arg) is not 0:
-        arg = arg[0] + [number]
-    else:
-        arg = [number]
+    try:
+        if len(arg) is not 0:
+            arg = arg[0] + [number]
+        else:
+            arg = [number]
 
-    if len(arg) == 3:
-        return arg[1](arg[0], arg[2])
-    else:
-        return arg
+        if len(arg) == 3:
+            return arg[1](arg[0], arg[2])
+        else:
+            return arg
+    except Exception as error:
+        print(f"error: {error}")
+        return []
 
 
 def one(*arg):
